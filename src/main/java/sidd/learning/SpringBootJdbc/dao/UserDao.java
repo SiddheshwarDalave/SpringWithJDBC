@@ -26,4 +26,32 @@ public class UserDao {
         }
         return status;
     }
+    public boolean updateUser(User user){
+        boolean status=false;
+        try{
+            String Update_USER_QUERY="UPDATE users SET name=?,gender=?,city=? where email=?";
+            int count=jdbcTemplate.update(Update_USER_QUERY,user.getName(),user.getGender(),user.getCity(), user.getEmail());
+            if(count>0){
+                status=true;
+            }
+        }catch (Exception e){
+            status=false;
+            e.printStackTrace();
+        }
+        return status;
+    }
+    public boolean deleteUser(User user){
+        boolean status=false;
+        try{
+            String Update_USER_QUERY="DELETE from users where email=?";
+            int count=jdbcTemplate.update(Update_USER_QUERY,user.getEmail());
+            if(count>0){
+                status=true;
+            }
+        }catch (Exception e){
+            status=false;
+            e.printStackTrace();
+        }
+        return status;
+    }
 }

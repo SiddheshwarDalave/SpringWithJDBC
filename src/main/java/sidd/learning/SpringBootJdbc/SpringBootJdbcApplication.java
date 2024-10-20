@@ -19,12 +19,29 @@ public class SpringBootJdbcApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		User user= new User("sidd","siddd@gmail.com","male","Solapur");
+
+		User user= new User("Ajay Dalave","ajdalave@gmail.com","male","Mohol");
 		boolean state=userDao.insertUser(user);
 		if(state){
 			System.out.println("User Created sucessfulluy");
 		}else{
 			System.out.println("Issue");
 		}
+
+		User user1= new User("Siddheshwar Dalave","siddd@gmail.com","male","Pune");
+		boolean state1=userDao.updateUser(user1);
+		if(state1){
+			System.out.println("User Updated successfully");
+		}else{
+			System.out.println("Issue");
+		}
+		User user2= new User("Siddheshwar Dalave","siddd@gmail.com","male","Pune");
+		boolean state2=userDao.deleteUser(user2);
+		if(state1){
+			System.out.println("User Deleted successfully");
+		}else{
+			System.out.println("Issue");
+		}
+
 	}
 }
